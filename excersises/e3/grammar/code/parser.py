@@ -27,11 +27,11 @@ def parse(words: list, grammar: Grammar) -> list:
                 for rule in grammar.rules:
                     if len(rule.rhs) == 2 and rule.rhs[0] in field[j][k] and rule.rhs[1] in field[k + 1][i]:
                         field[j][i].add(rule.lhs)
-                        for left_node in field[k][i]:
-                            for right_node in field[j][k+1]:
+                        for left_node in t[j][k]:
+                            for right_node in t[k+1][i]:
                                 t[j][i].append(ParseTree(rule.lhs, [left_node, right_node]))
-    if grammar.start_symbol in field[0][n - 1]:
-        return [node for node in t[0][n - 1] if node.symbol == grammar.start_symbol]
+    if grammar.start_symbol in field[0][n-1]:
+        return [node for node in t[0][n-1] if node.symbol == grammar.start_symbol]
     else:
         return []  # not much better than the exception because we promise above to return all parses...
 

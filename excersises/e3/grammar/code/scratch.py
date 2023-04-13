@@ -15,6 +15,5 @@ tokens = sentence.split(" ")
 
 parser.is_in_language(tokens, gr)
 
-parsing_results = parse(tokens, gr)  # oups this fails at the moment...
-# one of the parsing results should yield the same result as the example from above
+parsing_results = parser.parse(tokens, gr)
 assert repr(parser.example_telescope_parse()) in map(repr, parsing_results)
