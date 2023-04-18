@@ -1,0 +1,15 @@
+// this syntax is inspired from https://github.com/nltk/nltk/blob/develop/nltk/test/semantics.doctest
+
+#ABNF V1.0 utf-8;
+language en;
+// Noah likes expensive restaurants
+
+public $S = $NP $VP;
+$NP = $NNP;
+$NP = $JJ $NNS;
+$VP = $VBZ $NP;
+$NNP = Noah|{Noah};
+$VBZ = likes|{@f.@y.(all x.(f(x) -> likes(y,x))};
+$JJ = expensive|{@x.expensive(x)};
+$NNS = restaurants|{@x.restaurant(x)};
+
